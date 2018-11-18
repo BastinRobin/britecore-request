@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<script type="text/template" class="feature">
+ 	<article class="message">
+	  <div class="message-header">
+	    <p><%- item.title %></p>
+	    <button class="delete" aria-label="delete"></button>
+	  </div>
+	  <div class="message-body">
+	    <%- item.description %>
+	    <input type="number" value="<%- item.priority %>" class="input">
+	  </div>
+	</article>
+</script>
+
+<script type="text/template" class="task">
+ 	<div class="box">
+	  <article class="media">
+	    <div class="media-content">
+	      <div class="content">
+	        <p>
+	          <strong><%- item.title %></strong>
+	          <br>
+	          <%- item.description %>
+	        </p>
+	       
+	        <span class="tag <%- label(item.product_area) %>"><%- item.product_area %></span>
+	        <span class="tag is-default %>"><%- item.priority %></span>
+
+	      </div>
+	      <nav class="level is-mobile">
+	        <div class="level-left">
+            <% if(item.priority > 1) { %>
+	          <a class="level-item" aria-label="high priority" onclick="up('<%-item.id%>', '<%-item.client %>')">
+	            <span class="icon is-small icon has-text-primary">
+	              <i class="fa  fa-chevron-up" aria-hidden="true"></i>
+	            </span>
+	          </a>
+            <% } %>
+            
+	          <a class="level-item" aria-label="low priority" onclick="down('<%-item.id%>', '<%-item.client%>')">
+	            <span class="icon is-small icon has-text-primary">
+	              <i class="fa  fa-chevron-down" aria-hidden="true"></i>
+	            </span>
+	          </a>
+	          
+	        </div>
+	      </nav>
+	    </div>
+	  </article>
+	</div>
+</script>
+
+<section class="section">
+
+    <div class="container is-fullhd">
+        <div class="columns">
+            <div class="column is-8">
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification is-warning">
+                    <button class="delete"></button>
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% endwith %}
+              <div class="card">
+                  <div class="card-header">
+                      <p class="card-header-title">
+                          Feature Request
+                      </p>
+                  </div>
+                  <div class="card-content">                          
+                      
+                      <form action="/api/feature" method="POST" class="feature-form">
+                      <div class="field is-horizontal">
+                          <div class="field-label is-normal">
+                              <label class="label">Title</label>
+                          </div>
+                          <div class="field-body">
+                              <div class="field">
+                              <div class="control">
+                                  <input class="input" name="title" type="text" placeholder="e.g. Drag & Drop user selection" required>
+                              </div>
+                              
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="field is-horizontal">
+                          <div class="field-label is-normal">
+                              <label class="label">Description</label>
+                          </div>
+                          <div class="field-body">
+                              <div class="field">
+                              <div class="control">
+                                  <textarea class="textarea" name="description" placeholder="Explain how we can help you" required></textarea>
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+  
+                  </div>
+              </div>
+             
+            </div>
+            <div class="column is-4">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Client</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                            <select name="client">
+                                <option value="client1">Client1</option>
+                                <option value="client2">Client2</option>
+                                <option value="client3">Client3</option>
+                                <option value="client4">Client4</option>
+
+                            </select>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Priority</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <input type="number" class="input" name="priority">
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Target Date</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" type="date" name="target_date" placeholder="Target date">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Product Area</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                            <select name="product_area">
+                                <option>Policies</option>
+                                <option>Billing</option>
+                                <option>Claims</option>
+                                <option>Reports</option>
+                            </select>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <button class="button is-primary submit">
+                            Submit New Request
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        
+        <div class="columns">
+
+        	{% for col in ['client1', 'client2', 'client3', 'client4'] %}
+        	<div class="column is-3">
+        		<div class="card">
+        			<div class="card-header">
+        				<p class="card-header-title">{{ col.upper() }}</p>
+        			</div>
+        			<div class="card-content" id="{{ col }}">
+        				
+        			</div>
+        		</div>
+        	</div>
+        	{% endfor %}
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
