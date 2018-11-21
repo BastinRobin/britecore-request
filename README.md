@@ -1,4 +1,7 @@
 # Britecore Feature Request Application
+
+[Live Demo](https://britecore-request.herokuapp.com) | [Github](https://github.com/BastinRobin/britecore-request)
+
 A "feature request" is a request for a new feature that will be added onto an existing piece of software. Assume that the user is an employee at IWS who would be entering this information after having some correspondence with the client that is requesting the feature. The necessary fields are:
 
 -   **Title:**  A short, descriptive name of the feature request.
