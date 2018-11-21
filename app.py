@@ -10,7 +10,6 @@ from datetime import datetime
 
 app = Flask(__name__, static_folder="static")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
