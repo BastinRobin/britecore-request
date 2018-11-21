@@ -101,7 +101,7 @@
                           <div class="field-body">
                               <div class="field">
                               <div class="control">
-                                  <textarea class="textarea" name="description" placeholder="Explain how we can help you" required></textarea>
+                                  <textarea class="textarea" rows="6" name="description" placeholder="Explain how we can help you" required></textarea>
                               </div>
                               </div>
                           </div>
@@ -112,89 +112,93 @@
              
             </div>
             <div class="column is-4">
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Client</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-narrow">
-                        <div class="control">
-                            <div class="select is-fullwidth">
-                            <select name="client">
-                                <option value="client1">Client1</option>
-                                <option value="client2">Client2</option>
-                                <option value="client3">Client3</option>
-                                <option value="client4">Client4</option>
+                <div class="card">
+                  <div class="card-content">  
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Client</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                <select name="client">
+                                    <option value="client1">Client1</option>
+                                    <option value="client2">Client2</option>
+                                    <option value="client3">Client3</option>
+                                    <option value="client4">Client4</option>
 
-                            </select>
+                                </select>
+                                </div>
+                            </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Priority</label>
                         </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Priority</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-narrow">
-                        <div class="control">
-                            <div class="select is-fullwidth">
-                                <input type="number" class="input" name="priority" data-validation="numeric">
-                            
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <input type="number" class="input" name="priority" data-validation="numeric">
+                                
+                                </div>
+                            </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Target Date</label>
                         </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Target Date</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                            <input class="input" type="date" name="target_date" placeholder="Target date">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                            </span>
-                        </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Product Area</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-narrow">
-                        <div class="control">
-                            <div class="select is-fullwidth">
-                            <select name="product_area">
-                                <option>Policies</option>
-                                <option>Billing</option>
-                                <option>Claims</option>
-                                <option>Reports</option>
-                            </select>
+                        <div class="field-body">
+                            <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" type="date" name="target_date" placeholder="Target date">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                                </span>
+                            </p>
                             </div>
                         </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Product Area</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                <select name="product_area">
+                                    <option>Policies</option>
+                                    <option>Billing</option>
+                                    <option>Claims</option>
+                                    <option>Reports</option>
+                                </select>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="field is-horizontal">
-                    <div class="field-label">
-                        <!-- Left empty for spacing -->
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                        <div class="control">
-                            <button class="button is-primary submit">
-                            Submit New Request
-                            </button>
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <!-- Left empty for spacing -->
                         </div>
+                        <div class="field-body">
+                            <div class="field">
+                            <div class="control">
+                                <button class="button is-primary submit">
+                                Submit New Request
+                                </button>
+                            </div>
+                            </div>
                         </div>
                     </div>
+                  </div>
                 </div>
               </form>
             </div>
