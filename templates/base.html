@@ -31,7 +31,7 @@
     </section>
     {% block body %}{% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="{{ url_for('static', filename='notify.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
     <script src="{{ url_for('static', filename='app.js') }}"></script>
     {% block scripts %}{% endblock %}

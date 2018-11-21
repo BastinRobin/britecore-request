@@ -70,6 +70,10 @@ up = function(id, client) {
 
         renderTasks(data, '#'+client);
 
+	    $.notify("Priority changed", "success");
+
+
+
 
       },
       error: function(err) {
@@ -82,27 +86,29 @@ up = function(id, client) {
 
 down = function(id, client) {
 	var data = {
-  id: id,
-  client: client,
-  mode: 'down'
-};
+	  id: id,
+	  client: client,
+	  mode: 'down'
+	};
 
-$.ajax({
-    url: '/api/feature/priority',
-    type: "POST",
-    data: data,
-    success: function(data) {
-        
-      data = _.sortBy(data, 'priority').reverse();
+	$.ajax({
+	    url: '/api/feature/priority',
+	    type: "POST",
+	    data: data,
+	    success: function(data) {
+	        
+	      data = _.sortBy(data, 'priority').reverse();
 
-      renderTasks(data, '#'+client);
+	      renderTasks(data, '#'+client);
+
+	      $.notify("Priority changed", "success");
 
 
-    },
-    error: function(err) {
-      console.error(err);
-    }
-});
+	    },
+	    error: function(err) {
+	      console.error(err);
+	    }
+	});
 }
 
 $.ajax({
@@ -140,7 +146,9 @@ $('.submit').on('click', function(e) {
 	    		
 	    	data = _.sortBy(data, 'priority').reverse();
 
-	      renderTasks(data, '#'+data[0].client);
+	      	renderTasks(data, '#'+data[0].client);
+
+	      	$.notify("Task added", "success");
 
 
 	    },
